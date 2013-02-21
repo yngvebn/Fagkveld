@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using ContinousDeploymentWithEF.Database;
 
 namespace ContinousDeploymentWithEF.Controllers
 {
@@ -7,11 +9,11 @@ namespace ContinousDeploymentWithEF.Controllers
     {
         public ActionResult Index()
         {
-            List<TestModel> list = new List<TestModel>()
-                {
-                    new TestModel() {Age = 23, Name = "Someone"},
-                    new TestModel() {Age = 30, Name = "Else"}
-                };
+            var list = new List<Person>();
+            using (Db db = new Db())
+            {
+                list = db.Set<Person>().ToList();
+            }
             return View(list);
         }
 

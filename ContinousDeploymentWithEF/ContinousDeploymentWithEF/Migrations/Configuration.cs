@@ -1,3 +1,5 @@
+using ContinousDeploymentWithEF.Database;
+
 namespace ContinousDeploymentWithEF.Migrations
 {
     using System;
@@ -14,6 +16,16 @@ namespace ContinousDeploymentWithEF.Migrations
 
         protected override void Seed(ContinousDeploymentWithEF.Database.Db context)
         {
+            context.Set<Person>().AddOrUpdate(new Person()
+                {
+                    Age = 32,
+                    Name = "Yngve"
+
+                }, new Person()
+                    {
+                        Name = "Harald",
+                        Age = 42
+                    });
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

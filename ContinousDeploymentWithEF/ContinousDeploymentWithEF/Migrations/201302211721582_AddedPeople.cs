@@ -13,7 +13,7 @@ namespace ContinousDeploymentWithEF.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        Age = c.Int(nullable: false),
+                        Age = c.Int(nullable: false, defaultValue: 20),
                     })
                 .PrimaryKey(t => t.Id);
             
